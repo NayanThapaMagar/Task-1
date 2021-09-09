@@ -1,10 +1,13 @@
-// const express = require("express");
-// const app = express();
-const http = require('http')
+const express = require("express");
+const app = express();
+app.use(express.json());
+
+const register = require("./register");
+const login = require("./login");
+
+app.post("/register", register);
+
+app.post("/login", login);
+
 const PORT = 3002;
-
-const server = http.createServer(function(req,res) {
-
-})
-
-server.listen(PORT, () => console.log(`Server running at port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running at port ${PORT}`));
